@@ -26,6 +26,8 @@ static const uint8_t SCK = 12;
 #define BUZZER_PIN 2
 #define BATTERY_PIN 2
 #define NEOPIXEL_PIN 1
+#define USE_TFT_eSPI_TOUCH 1
+#define HAS_TOUCH 1
 #define XPT2046_MOSI 35
 #define XPT2046_MISO 37
 #define XPT2046_CLK 36
