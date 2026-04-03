@@ -1,18 +1,20 @@
 #include "NRF24.h"
 #include "core/display.h"
 #include "core/utils.h"
+#include "hw_mutex.h"
 #include "modules/NRF24/nrf_common.h"
 #include "modules/NRF24/nrf_jammer.h"
 #include "modules/NRF24/nrf_mousejack.h"
 #include "modules/NRF24/nrf_spectrum.h"
 
 void NRF24Menu::optionsMenu() {
+    acquireNRF24_U3();
     options.clear();
     options.push_back({"Information", nrf_info});
     options.push_back({"Spectrum", nrf_spectrum});
-    #if !defined(LITE_VERSION)
+#if !defined(LITE_VERSION)
     options.push_back({"MouseJack", nrf_mousejack});
-    #endif
+#endif
     options.push_back({"NRF Jammer", nrf_jammer});
 
 #if defined(ARDUINO_M5STICK_C_PLUS) || defined(ARDUINO_M5STICK_C_PLUS2)

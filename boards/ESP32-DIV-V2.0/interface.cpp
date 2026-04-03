@@ -1,5 +1,6 @@
 #include "core/powerSave.h"
 #include "core/utils.h"
+#include "hw_mutex.h"
 #include <SPI.h>
 #include <interface.h>
 

@@ -2,6 +2,7 @@
 #include "core/display.h"
 #include "core/settings.h"
 #include "core/utils.h"
+#include "hw_mutex.h"
 #include "modules/ir/TV-B-Gone.h"
 #include "modules/ir/custom_ir.h"
 #include "modules/ir/ir_jammer.h"
@@ -12,6 +13,7 @@ void IRMenu::optionsMenu() {
     bool prevPower = M5.Power.getExtOutput();
     M5.Power.setExtOutput(true); // ENABLE 5V OUTPUT
 #endif
+    acquireIR();
     options = {
         {"TV-B-Gone", StartTvBGone              },
         {"Custom IR", otherIRcodes              },

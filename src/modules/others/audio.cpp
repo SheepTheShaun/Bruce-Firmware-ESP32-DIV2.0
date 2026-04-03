@@ -1,5 +1,6 @@
 #include "audio.h"
 #include "core/mykeyboard.h"
+#include "hw_mutex.h"
 
 #if defined(HAS_NS4168_SPKR)
 #include "AudioFileSourceFunction.h"
@@ -722,6 +723,7 @@ void playTone(unsigned int frequency, unsigned long duration, short waveType) {
 
 void _tone(unsigned int frequency, unsigned long duration) {
     if (!bruceConfig.soundEnabled) return;
+    acquireBuzzer();
 
 #if defined(BUZZ_PIN)
     tone(BUZZ_PIN, frequency, duration);
